@@ -11,7 +11,7 @@ FASTLED_USING_NAMESPACE
 #include <Wire.h>  // This is the Ard/RIOduino's I2C library.  
 
 #define LED_PIN 5 //DIO pin used for control of LEDs
-#define NUM_LEDS 59 //number of LEDs in LED strip
+#define NUM_LEDS 179 //number of LEDs in LED strip
 #define LED_TYPE  WS2811
 #define COLOR_ORDER GRB
 int LEDmode = 2;
@@ -48,38 +48,17 @@ void loop()
 {
   //Wire.onReceive(dataReceived); //Looks for data send over I2C, begins when any is detected, no matter the size. 
  
-    //gPatterns[currpattern]();
+    gPatterns[currpattern]();
     EVERY_N_MILLISECONDS( 20 ) { (gHue++)%360; } // slowly cycle the "base color" through the rainbow
-    //EVERY_N_SECONDS( 10 ) { nextPattern(); } // change patterns 
-    Explode();
+    EVERY_N_SECONDS( 10 ) { nextPattern(); } // change patterns 
+    //Explode();
 
 
     //FastLED.delay(700);
     FastLED.show();
     //Serial.println(currpattern);
     // read the state of the pushbutton value:
- /* sensorState = digitalRead(SENSORPIN);
  
-  // check if the sensor beam is broken
-  // if it is, the sensorState is LOW:
-  if (sensorState == LOW) {     
-    // turn LED on:
-    digitalWrite(LEDPIN, HIGH);  
-  } 
-  else {
-    // turn LED off:
-    digitalWrite(LEDPIN, LOW); 
-  }
-  
-  if (sensorState && !lastState) {
-    MVRT();
-  } 
-  if (!sensorState && lastState) {
-    turnOff();
-  }
-  lastState = sensorState;
-
-    */
 
 }
 
